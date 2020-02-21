@@ -71,9 +71,14 @@ energy_slab=slab.get_potential_energy()
 print(slab.get_potential_energy())
 #print (energy_slab)
 
-######claculating the energy surface through  the 2 models: the first one is through energy per atom and the second one is energy by surface area which is a*a*sinO with O is 90 for 100 and 110 faces while it is 60 for 111 face
+######claculating the energy surface through  the 2 models: 
+#the first one is through energy per atom and the second one is energy by surface area 
+#which is a*a*sinO with O is 90 for 100 and 110 faces while it is 60 for 111 face
+ev_per_area=(0.5*((energy_slab-36*energy_bulk)/((a*10**-10)**2)*np.sin(np.deg2rad(60))))
+ev_to_joule = 1.6021773**-19
 
-print ("energy of surface Esur1: ", (0.5*(energy_slab-36*energy_bulk))/9,  "ev/atom")
-print ("energy of surface Esur2: ", (0.5*((energy_slab-36*energy_bulk)/(a*a*np.sin(np.deg2rad(60)))),  "ev/((A^2)"))
+print ("energy of surface Esur1: ", (0.5*(energy_slab-36*energy_bulk))/9,  "eV/atom")
+print ("energy of surface Esur2: ", ev_per_area,  "eV/(m^2)"))
+print ("energy of surface Esur3: ", ev_per_area*ev_to_joule, "J/m^2)
 #traj.write(slab.traj)
 
