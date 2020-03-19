@@ -8,8 +8,6 @@ from ase.build import fcc111, add_adsorbate, surface, molecule, bulk
 import numpy as np
 from ase.visualize import view
 
-############ Start reading from line 62 ##############
-
 ########### ISAMBARD/FHI-AIMS SPECIFIC ###############
 #import os
 #command="aprun -n "+os.environ["NPROCS"]+" /home/ca-alogsdail/fhi-aims-gnu/bin/aims."+os.environ["VERSION"]+".scalapack.mpi.x"
@@ -131,9 +129,10 @@ surface_opt.run(fmax=0.01)
 ##########ADDING ADSORBATE ONTO THE SURFACE######
 ## Remove constraints and add adsorbate
 slab.set_constraint()
-slab=slab
+
 ## If build using ase.build can specify adsorption sites
 add_adsorbate(slab, molecule, 2.0, 'ontop')
+
 ## Oherwise x-y coordinates - offset is specified in Angstrom
 #add_adsorbate(slab, molecule, 2.0, position=(4.0, 2.4))
 ## Generate a new mask based on the changed number of atoms and constrain last two layers
